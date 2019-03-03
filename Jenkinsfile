@@ -13,8 +13,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh './gradlew test'
-                sh './gradlew jacocoTestReport'
+                bat './gradlew test'
+                bat './gradlew jacocoTestReport'
 
                 publishHTML target: [
                     allowMissing: false,
@@ -43,12 +43,13 @@ pipeline {
                 sh './gradlew jar'
             }
         }
-    }
-    post {
-        always {
-            echo 'Succesfully'
-            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
-            junit 'build/test-results/**/*.xml'
+
+        post {
+            always {
+                echo 'Succesfully'
+                archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                junit 'build/test-results/**/*.xml'
+            }
         }
     }
 }
