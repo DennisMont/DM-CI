@@ -43,13 +43,12 @@ pipeline {
                 sh './gradlew jar'
             }
         }
-
-        post {
+    }
+    post {
             always {
                 echo 'Succesfully'
                 archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
                 junit 'build/test-results/**/*.xml'
             }
         }
-    }
 }
