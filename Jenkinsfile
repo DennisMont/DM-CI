@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './gradlew clean build -p DM-CI'
+                bat '.\gradlew clean build'
                 archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             }
         }
