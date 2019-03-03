@@ -6,7 +6,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh 'git update-index --chmod=+x ./gradlew'
                 sh './gradlew clean build'
                 archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             }
@@ -49,7 +48,7 @@ pipeline {
     post {
         always {
             echo 'Succesfully'
-            junit 'gradle-java-at08/build/test-results/**/*.xml'
+            junit 'build/test-results/**/*.xml'
         }
     }
 }
