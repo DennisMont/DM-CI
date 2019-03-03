@@ -7,7 +7,6 @@ pipeline {
             steps {
                 echo 'Building..'
                 bat './gradlew clean build'
-                archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             }
         }
 
@@ -48,6 +47,7 @@ pipeline {
     post {
         always {
             echo 'Succesfully'
+            archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
             junit 'build/test-results/**/*.xml'
         }
     }

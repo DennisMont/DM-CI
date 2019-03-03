@@ -20,3 +20,4 @@ release.properties
 .gradle
 gradle-5.2.1
 build
+bin
