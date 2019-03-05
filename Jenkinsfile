@@ -15,8 +15,8 @@ pipeline {
                 echo 'Testing..'
                 bat './gradlew test'
                 bat './gradlew jacocoTestReport'
-                bat './gradlew --info sonarqube'
-
+                bat './gradlew jar'
+                
                 publishHTML target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: false,
@@ -38,10 +38,10 @@ pipeline {
             }
         }
             
-        stage('Deploy') {
+        stage('Code Quality') {
             steps {
-                echo 'Deploying....'
-                bat './gradlew jar'
+                echo 'Code Quality verification....'
+                bat './gradlew --info sonarqube'
             }
         }
     }
