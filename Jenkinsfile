@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh './gradlew jar'
+                bat './gradlew jar'
             }
         }
     }
