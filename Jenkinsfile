@@ -15,6 +15,7 @@ pipeline {
                 echo 'Testing..'
                 bat './gradlew test'
                 bat './gradlew jacocoTestReport'
+                bat './gradlew --info sonarqube'
 
                 publishHTML target: [
                     allowMissing: false,
